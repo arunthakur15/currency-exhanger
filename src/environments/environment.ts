@@ -5,8 +5,7 @@
 export const environment = {
   production: false,
   API_URL: '',
-  API_KEY: '',
-  CUR_URL: ''
+  API_KEY: ''
 };
 
 /*

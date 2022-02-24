@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { retry } from 'rxjs-compat/operator/retry';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { currencies } from 'currencies.json';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class CurrencyExchangeService {
     return this.http.request<any>('get',url);
   }
 
-  getAllCurrencyNames(): Observable<HttpResponse<any>> {
-    return this.http.request<any>('get',environment.CUR_URL);
+  getAllCurrencyNames(){
+    return currencies;
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Currency } from 'currencies.json';
 import { Subscription } from 'rxjs';
 import { CurrencyExchangeService } from '../api/currency-exchange.service';
 
@@ -8,32 +10,46 @@ import { CurrencyExchangeService } from '../api/currency-exchange.service';
   styleUrls: ['./converter-panel.component.scss']
 })
 export class ConverterPanelComponent implements OnInit {
-  fromCur: string = 'EUR';
-  toCur: string = 'USD';
   currentRate: string = '';
+  currencyList: Currency[]= [];
+  converterForm: FormGroup;
+  result: string;
   private subscription = new Subscription();
-  constructor(private exchangeRate: CurrencyExchangeService) { }
+  constructor(private exchangeRate: CurrencyExchangeService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.converterForm = this.fb.group({
+      fromCur: ['EUR'],
+      toCur: ['USD'],
+      amount:[1],
+    })
     this.currecyExchangeRates();
     this.getCurrencyList();
   }
 
   currecyExchangeRates() {
     this.subscription.add(
-      this.exchangeRate.getRates(this.fromCur,this.toCur).subscribe(data => {
-        console.log(data[Object.keys(data)[0]]);
-        this.currentRate = data[Object.keys(data)[0]]
+      this.exchangeRate.getRates(this.converterForm.controls.fromCur.value, this.converterForm.controls.toCur.value).subscribe(data => {
+        this.currentRate = parseFloat(data[Object.keys(data)[0]]).toFixed(4);
+        this.result = '';
       })
     )
   }
 
   getCurrencyList() {
-    this.subscription.add(
-      this.exchangeRate.getAllCurrencyNames().subscribe(data => {
-        console.log(data);
-      })
-    )
+    //console.log(this.exchangeRate.getAllCurrencyNames());
+    this.currencyList = this.exchangeRate.getAllCurrencyNames();
+  }
+
+  convert(){
+    this.result = (this.converterForm.controls.amount.value * parseFloat(this.currentRate)).toFixed(3);
+  }
+
+  swapCurrency(){
+    let from = this.converterForm.controls.fromCur.value;
+    this.converterForm.controls.fromCur.setValue(this.converterForm.controls.toCur.value);
+    this.converterForm.controls.toCur.setValue(from);
+    this.currecyExchangeRates();
   }
 
   ngOnDestroy(){

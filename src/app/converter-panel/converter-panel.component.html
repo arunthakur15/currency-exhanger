@@ -3,38 +3,36 @@
 <div class="container-fluid">
     <h2>Currency Exchanger</h2>
     <div class="col-xs-12">
-        <form class="row cea-form">
+        <form [formGroup]="converterForm" class="row cea-form">
             <div class="col-xs-12 col-md-4">
                 <label class="cea-label">Amount</label>
-                <input type="text" class="cea-input"/>
+                <input type="number" formControlName="amount" class="cea-input"/>
 
                 <div class="cea-rate">
-                    1.00 {{fromCur}} = {{currentRate ? currentRate : 'XX.XX'}} {{toCur}}
+                    1.00 {{converterForm.controls.fromCur.value}} = {{currentRate ? currentRate : 'XX.XX'}} {{converterForm.controls.toCur.value}}
                 </div>
             </div>
             <div class="row col-xs-12 col-md-8">
                 <div class="col-xs-12 col-md-5">
                     <label class="cea-label">From</label>
-                    <select class="cea-select" (change)="currecyExchangeRates()">
-                        <option value="eur">EUR</option>
-                        <option value="eur">USD</option>
+                    <select class="cea-select" formControlName="fromCur" (change)="currecyExchangeRates()">
+                        <option *ngFor="let cur of currencyList" [value]="cur.code">{{cur.code}}</option>
                     </select>
                 </div>
                 <div class="col-xs-12 col-md-2">
-                    <img src="assets/images/arrow.png" class="arrow-icon" alt="arrow">
+                    <img src="assets/images/arrow.png" (click)="swapCurrency()" class="arrow-icon" alt="arrow">
                 </div>
                 <div class="col-xs-12 col-md-5">
                     <label class="cea-label">To</label>
-                    <select class="cea-select" (change)="currecyExchangeRates()">
-                        <option value="usd">USD</option>
-                        <option value="eur">EUR</option>
+                    <select class="cea-select" formControlName="toCur" (change)="currecyExchangeRates()">
+                        <option *ngFor="let cur of currencyList" [value]="cur.code">{{cur.code}}</option>
                     </select>
                 </div>
                 <div class="col-xs-12">
-                    <button class="cea-button">Convert</button>
+                    <button class="cea-button" (click)="convert()">Convert</button>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                    <div class="converted-amount">xx.xx USD</div>
+                    <div class="converted-amount">{{result ? result : '--.--'}} {{converterForm.controls.toCur.value}}</div>
                 </div>
                 <div class="col-xs-12 col-md-6">
                     <button class="cea-button">More Details</button>

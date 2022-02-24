@@ -11,6 +11,7 @@ import { CardsGridComponent } from './home/cards-grid/cards-grid.component';
 import { ChartComponent } from './details/chart/chart.component';
 import { CEAInterceptorService } from './api/cea-interceptor.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: CEAInterceptorService, multi: true}
