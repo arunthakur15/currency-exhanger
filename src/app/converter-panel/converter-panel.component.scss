@@ -1,0 +1,57 @@
+@import 'src/theme/index.scss';
+@mixin formitem {
+    background-color: #000;
+        border-radius: 0.25rem;
+        border: $border;
+        color: #fff;
+        width: 100%;
+        height: 2rem;
+}
+
+$border: 1px solid $color-3;
+
+.cea-form{
+    background-color: $bg-1;
+    padding: 0.5rem;
+    .cea-label{
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+    .cea-input{
+        @include formitem;
+        &:focus{
+            border-color: $font-2;
+        }
+    }
+    .cea-select{
+        @include formitem;
+        &:focus{
+            border-color: $font-2;
+        }
+    }
+    .arrow-icon{
+        vertical-align: text-bottom;
+        margin-top: 1.7rem;
+    }
+    .cea-button{
+        width: 100%;
+        height: 2rem;
+        background-color: $font-2;
+        border: 0;
+        margin-top: 1rem;
+        border-radius: 0.25rem;
+        color: #fff;
+    }
+    .converted-amount{
+        border: $border;
+        border-radius: 0.25rem;
+        margin-top: 1rem;
+        padding: 0.5rem;
+    }
+    .cea-rate{
+        border: $border;
+        border-radius: 0.25rem;
+        margin-top: 1rem;
+        padding: 0.5rem;
+    }
+}

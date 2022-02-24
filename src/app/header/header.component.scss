@@ -1,0 +1,41 @@
+@import 'src/theme/index.scss';
+
+.cea-header-main{
+    margin: 0 !important;
+    width: 100%;
+    line-height: $line-height-1;
+    margin-bottom: 0;
+    padding: 0.5rem 0.25rem;
+    border-bottom: 1px solid $font-2;
+    background-color: $bg-1;
+    .cea-logo{
+        display: inline-block;
+        padding-left: 1rem;
+    }
+
+    .cea-nav{
+        list-style: none;
+        display: inline-block;
+        text-align: right;
+        margin-top: 0.25rem;
+        margin-bottom: 0;
+        width: 100%;
+        li{
+            display: inline;
+            margin-left: 0.5rem;
+            background-color: #ccc;
+            border-radius: 0.25rem;
+            padding: 00.25rem;
+            a{
+                color: $font-2 !important;
+                text-decoration: none;
+            }
+            &:hover{
+                background-color: $font-2;
+                a{
+                    color: #fff !important;
+                }
+            }
+        }
+    }
+}

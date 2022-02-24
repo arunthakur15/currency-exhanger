@@ -28,7 +28,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/theme/index.scss",
+                "lazy": true
+              }
             ],
             "scripts": []
           },
@@ -60,6 +64,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "dev" : {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
             }
           }
         },
@@ -71,6 +83,9 @@
           "configurations": {
             "production": {
               "browserTarget": "currency-exchanger-app:build:production"
+            },
+            "dev": {
+              "browserTarget": "currency-exchanger-app:build:dev"
             }
           }
         },
