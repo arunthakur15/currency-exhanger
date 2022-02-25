@@ -43,8 +43,8 @@ export class ChartComponent implements OnInit {
     private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.fromCur = this.currencyData.fromCur;
-    this.toCur = this.currencyData.toCur;
+    this.fromCur = this.currencyData?.fromCur;
+    this.toCur = this.currencyData?.toCur;
     
     this.getHistoricalData();
 
