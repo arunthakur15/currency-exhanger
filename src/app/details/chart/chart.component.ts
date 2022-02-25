@@ -65,6 +65,8 @@ export class ChartComponent implements OnInit {
       let amt = parseFloat(parseFloat(data.results[Object.keys(data.results)[0]]).toFixed(4));
       this.chartData[0].data.push(amt);
       this.chartData[0].label = Object.keys(data.results)[0];
+      let month = this.datepipe.transform(aDate,'MMMM');
+      if(!this.chartLabels.includes(month))
       this.chartLabels.push(this.datepipe.transform(aDate,'MMMM'));
     }));
   }
