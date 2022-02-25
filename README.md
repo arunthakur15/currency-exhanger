@@ -7,10 +7,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Run `ng serve -c dev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Assumption
-#1. Popular currencies are not available on free api. Created an array with hard coded values.
-#2. Latest rates, Historical Data apis are implemented using free trial account. Source : (https://api.fastforex.io)
-#3. UI assests are croped and used from provided pdf file.
-#4. Chart is implememted only for current month as historical data is not available more than 14 days in free account.
+### 1. Popular currencies are not available on free api. Created an array with hard coded values.
+### 2. Latest rates, Historical Data apis are implemented using free trial account. Source : (https://api.fastforex.io)
+### 3. UI assests are croped and used from provided pdf file.
+### 4. Chart is implememted only for current month as historical data is not available more than 14 days in free account.
 
 ## Code scaffolding
 
