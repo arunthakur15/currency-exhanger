@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.3.
 
+## Clone
+Clone the repo using `git clone https://github.com/arunthakur15/currency-exhanger.git` or down load .zip file and extract it on local machine.
+
+## Install dependecies
+Navigate to the root folder (package.json will be in the root folder). Run `npm install` to download all the dependencies.
+
 ## Development server
 
 Run `ng serve -c dev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
