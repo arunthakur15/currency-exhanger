@@ -11,10 +11,10 @@ describe('ChartComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      declarations: [ ChartComponent ],
-      providers:[DatePipe]
+      declarations: [ChartComponent],
+      providers: [DatePipe]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

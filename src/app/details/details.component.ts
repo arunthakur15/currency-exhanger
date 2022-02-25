@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -7,14 +7,14 @@ import { Subscription } from 'rxjs';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent implements OnInit, OnDestroy {
   fromCur: string;
-  toCur:string;
+  toCur: string;
   fromDisable: boolean;
-  currencyDetails: { };
+  currencyDetails: {};
   toDisable: boolean;
   private subscription = new Subscription();
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -22,23 +22,23 @@ export class DetailsComponent implements OnInit {
      * Subscription added to read the query parameters for currency details
      */
     this.subscription.add(
-    this.route.queryParams.subscribe(params => {
-      this.fromCur = params['fromCur'];
-      this.toCur = params['toCur'];
-      this.fromDisable = params['fromDisable'];
-      this.toDisable = params['toDisable'];
-    }));
+      this.route.queryParams.subscribe(params => {
+        this.fromCur = params.fromCur;
+        this.toCur = params.toCur;
+        this.fromDisable = params.fromDisable;
+        this.toDisable = params.toDisable;
+      }));
 
-    
+
     this.currencyDetails = {
-      fromCur : this.fromCur,
+      fromCur: this.fromCur,
       toCur: this.toCur,
       fromDisable: this.fromDisable,
       toDisable: this.toDisable
-    }
+    };
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 

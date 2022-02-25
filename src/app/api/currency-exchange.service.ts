@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { retry } from 'rxjs-compat/operator/retry';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { currencies } from 'currencies.json';
+import { currencies, Currency } from 'currencies.json';
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +12,27 @@ import { currencies } from 'currencies.json';
 export class CurrencyExchangeService {
 
   constructor(private http: HttpClient) { }
-  
-  getRates(fromCur:string, toCur:string): Observable<HttpResponse<any>> {
-    let url = `${environment.API_URL}/fetch-one?from=${fromCur}&to=${toCur}&api_key=${environment.API_KEY}`;
-    return this.http.request<any>('get',url);
+  getRates(fromCur: string, toCur: string): Observable<HttpResponse<any>> {
+    const url = `${environment.API_URL}/fetch-one?from=${fromCur}&to=${toCur}&api_key=${environment.API_KEY}`;
+    return this.http.request<any>('get', url);
   }
 
-  getMultiCurrencyRates(fromCur:string, toCur:string): Observable<HttpResponse<any>> {
-    let url = `${environment.API_URL}/fetch-multi?from=${fromCur}&to=${toCur}&api_key=${environment.API_KEY}`;
-    return this.http.request<any>('get',url);
+  getMultiCurrencyRates(fromCur: string, toCur: string): Observable<HttpResponse<any>> {
+    const url = `${environment.API_URL}/fetch-multi?from=${fromCur}&to=${toCur}&api_key=${environment.API_KEY}`;
+    return this.http.request<any>('get', url);
   }
 
-  getAllCurrencyNames(){
+  getAllCurrencyNames(): Currency[] {
     return currencies;
   }
 
-  getCurrencyDetails(currencyCode: string) {
-    let currencyList = currencies;
-    return currencyList.filter(cur => cur.code == currencyCode);
+  getCurrencyDetails(currencyCode: string): Currency[] {
+    const currencyList = currencies;
+    return currencyList.filter(cur => cur.code === currencyCode);
   }
 
-  getHistoricalData(date:any,fromCur:string, toCur:string){
-    let url = `${environment.API_URL}/historical?date=${date}&from=${fromCur}&to=${toCur}&api_key=${environment.API_KEY}`;
-    return this.http.request<any>('get',url);
+  getHistoricalData(date: any, fromCur: string, toCur: string): Observable<HttpResponse<any>> {
+    const url = `${environment.API_URL}/historical?date=${date}&from=${fromCur}&to=${toCur}&api_key=${environment.API_KEY}`;
+    return this.http.request<any>('get', url);
   }
 }

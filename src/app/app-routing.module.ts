@@ -5,16 +5,16 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path:'home', component: HomeComponent, pathMatch: "full"
+    path: 'home', component: HomeComponent, pathMatch: 'full'
   },
   {
-    path:'details', component: DetailsComponent, pathMatch:'full'
+    path: 'details', component: DetailsComponent, pathMatch: 'full'
   },
   {
-    path:'details/EUR_USD', component: DetailsComponent, pathMatch:'full'
+    path: 'details/EUR_USD', component: DetailsComponent, pathMatch: 'full'
   },
   {
-    path:'details/EUR_GBP', component: DetailsComponent, pathMatch:'full'
+    path: 'details/EUR_GBP', component: DetailsComponent, pathMatch: 'full'
   },
   {
     path: '', redirectTo: 'home', pathMatch: 'full'

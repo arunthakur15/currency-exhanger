@@ -14,7 +14,6 @@ export class SharedService {
   getSharedData$ = this.subjectSharedData.asObservable();
 
   /**
-   * 
    * @param data A function to set shared data
    */
   setSharedData(data: any): void {

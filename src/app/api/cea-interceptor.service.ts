@@ -13,8 +13,8 @@ export class CEAInterceptorService implements HttpInterceptor {
     return next.handle(req)
       .pipe(catchError((err: any) => {
         if (err instanceof HttpErrorResponse) {
-          let errorMsg = JSON.stringify(err.error.error) ? JSON.stringify(err.error.error) : 'Unknown error! Please try later.';
-            alert(errorMsg);
+          const errorMsg = JSON.stringify(err.error.error) ? JSON.stringify(err.error.error) : 'Unknown error! Please try later.';
+          alert(errorMsg);
         }
 
         return new Observable<HttpEvent<any>>();
