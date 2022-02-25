@@ -9,10 +9,15 @@
 }
 
 $border: 1px solid $color-3;
-
+.page-title{
+    margin: 1rem 0;
+}
 .cea-form{
+    border: 1px solid $font-2;
+    border-left-width: 0;
+    border-right-width: 0;
     background-color: $bg-1;
-    padding: 0.5rem;
+    padding: 0.5rem 0 1rem 0;
     .cea-label{
         display: block;
         margin-bottom: 0.25rem;
@@ -28,10 +33,17 @@ $border: 1px solid $color-3;
         &:focus{
             border-color: $font-2;
         }
+        &:disabled{
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
     }
     .arrow-icon{
         vertical-align: text-bottom;
         margin-top: 1.7rem;
+        &.disabled{
+            pointer-events: none;
+        }
     }
     .cea-button{
         width: 100%;
@@ -41,12 +53,17 @@ $border: 1px solid $color-3;
         margin-top: 1rem;
         border-radius: 0.25rem;
         color: #fff;
+        display: block;
+        text-align: center;
+        line-height: 2rem;
+        text-decoration: none;
     }
     .converted-amount{
         border: $border;
         border-radius: 0.25rem;
         margin-top: 1rem;
         padding: 0.5rem;
+        text-align: center;
     }
     .cea-rate{
         border: $border;

@@ -1,1 +1,7 @@
-<p>cards-grid works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div *ngFor="let cur of latestRateCur | keyvalue" class="col-xs-6 col-md-4">
+            <div class="cea-popular-cur">{{cur.value*amount | json | number : '1.2-4'}} <br>{{cur.key | json}}</div>
+        </div>
+    </div>
+</div>

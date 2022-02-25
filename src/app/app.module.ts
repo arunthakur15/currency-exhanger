@@ -12,6 +12,8 @@ import { ChartComponent } from './details/chart/chart.component';
 import { CEAInterceptorService } from './api/cea-interceptor.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [
+    DatePipe,
     {provide: HTTP_INTERCEPTORS, useClass: CEAInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]

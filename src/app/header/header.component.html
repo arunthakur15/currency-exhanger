@@ -1,5 +1,4 @@
-<header class="cea-header-main">
-    <div class="row col-xs-12">
+<div class="row cea-header-main">
         <div class="col-xs-12 col-sm-5 cea-logo">
             <a [routerLink]="['/home']"><img src="assets/images/logo.png" alt="logo"></a>
         </div>
@@ -7,14 +6,13 @@
         <div class="col-xs-12 col-sm-7">
             <ul class="cea-nav">
                 <li >
-                    <a [routerLink]="['/details']" [queryParams]="{fromCurrency: 'EUR', toCurrency: 'USD'}">EUR-USD Details</a>
+                    <a [routerLink]="['/details/EUR_USD']" [queryParams]="{fromCur: 'EUR', toCur: 'USD', fromDisable:true, toDisable: false}">EUR-USD Details</a>
                 </li>
                 <li >
-                    <a [routerLink]="['/details']" [queryParams]="{fromCurrency: 'EUR', toCurrency: 'GBP'}">EUR-GBP Details</a>
+                    <a [routerLink]="['/details/EUR_GBP']" [queryParams]="{fromCur: 'EUR', toCur: 'GBP', fromDisable:true, toDisable: false}">EUR-GBP Details</a>
                 </li>
             </ul>
 
         </div>
 
-    </div>
-</header>
+</div>

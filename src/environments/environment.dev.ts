@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    API_URL: 'https://free.currconv.com/api/v7/',
-    API_KEY: '8d95a738257bd11ff06d'
+    API_URL: 'https://api.fastforex.io',
+    API_KEY: '0f7ad57a74-7523a3a38b-r7uhxg'
   };
   

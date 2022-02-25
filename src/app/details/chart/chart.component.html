@@ -1,1 +1,11 @@
-<p>chart works!</p>
+<div class="chart-container">
+    <canvas baseChart
+      [datasets]="chartData"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [colors]="chartColors"
+      [legend]="chartLegend"
+      [chartType]="chartType"
+      [plugins]="chartPlugins">
+    </canvas>
+  </div>

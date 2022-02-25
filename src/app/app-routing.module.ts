@@ -11,6 +11,12 @@ const routes: Routes = [
     path:'details', component: DetailsComponent, pathMatch:'full'
   },
   {
+    path:'details/EUR_USD', component: DetailsComponent, pathMatch:'full'
+  },
+  {
+    path:'details/EUR_GBP', component: DetailsComponent, pathMatch:'full'
+  },
+  {
     path: '', redirectTo: 'home', pathMatch: 'full'
   }
 ];
