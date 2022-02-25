@@ -23,11 +23,14 @@ export class ConverterPanelComponent implements OnInit {
     private sharedService: SharedService) { }
 
   ngOnInit(): void {
+    // Form element creation
     this.converterForm = new FormGroup({
       fromCur: new FormControl('EUR'),
       toCur: new FormControl('USD'),
       amount: new FormControl(this.defaultAmt),
     });
+
+    // Updating form values based on pass input from parent component
     if (this.currencyDetails) {
       this.converterForm.controls.fromCur.setValue(this.currencyDetails?.fromCur);
       this.converterForm.controls.toCur.setValue(this.currencyDetails?.toCur);
@@ -39,6 +42,9 @@ export class ConverterPanelComponent implements OnInit {
     this.getCurrencyList();
   }
 
+  /**
+   * Function to fetch exchanges rate of a currency against a base currency
+   */
   currecyExchangeRates() {
     this.subscription.add(
       this.exchangeRate.getRates(this.converterForm.controls.fromCur.value, this.converterForm.controls.toCur.value).subscribe(data => {
@@ -56,15 +62,24 @@ export class ConverterPanelComponent implements OnInit {
     );
   }
 
+  /**
+   * Function to call api to fetch all the currency codes and names
+   */
   getCurrencyList() {
     this.currencyList = this.exchangeRate.getAllCurrencyNames();
   }
 
+  /**
+   * Function to convert the amount to target currency
+   */
   convert() {
     let amt = this.converterForm.controls.amount.value;
     this.result = ((amt ? amt : this.defaultAmt) * parseFloat(this.currentRate)).toFixed(3);
   }
 
+  /**
+   * Function to swap currency from to to and to to from.
+   */
   swapCurrency() {
     let from = this.converterForm.controls.fromCur.value;
     this.converterForm.controls.fromCur.setValue(this.converterForm.controls.toCur.value);

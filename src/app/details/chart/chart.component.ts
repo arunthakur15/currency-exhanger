@@ -20,6 +20,7 @@ export class ChartComponent implements OnInit {
   @Input() currencyData;
 
 
+  //Charts related variables
   public chartOptions: ChartOptions  = {
     responsive: true,
   };
@@ -38,6 +39,8 @@ export class ChartComponent implements OnInit {
       backgroundColor: '#0f0',
     },
   ];
+
+
   constructor(private exchangeRate: CurrencyExchangeService, 
     private datepipe: DatePipe, 
     private sharedService: SharedService) { }
@@ -48,6 +51,9 @@ export class ChartComponent implements OnInit {
     
     this.getHistoricalData();
 
+    /**
+     * Subscription to read shared data
+     */
     this.subscription.add(
     this.sharedService.getSharedData$.subscribe(data => {
       this.fromCur = data.fromCur;
@@ -56,6 +62,9 @@ export class ChartComponent implements OnInit {
     }));
   }
 
+  /**
+   * Function to get the historical data of a currenct against a base currency to create chart data
+   */
   getHistoricalData(){
     let aDate = new Date();
     aDate.setDate(aDate.getDate() - 12);

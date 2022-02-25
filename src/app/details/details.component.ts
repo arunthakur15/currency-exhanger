@@ -17,6 +17,10 @@ export class DetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+
+    /**
+     * Subscription added to read the query parameters for currency details
+     */
     this.subscription.add(
     this.route.queryParams.subscribe(params => {
       this.fromCur = params['fromCur'];
@@ -24,6 +28,8 @@ export class DetailsComponent implements OnInit {
       this.fromDisable = params['fromDisable'];
       this.toDisable = params['toDisable'];
     }));
+
+    
     this.currencyDetails = {
       fromCur : this.fromCur,
       toCur: this.toCur,

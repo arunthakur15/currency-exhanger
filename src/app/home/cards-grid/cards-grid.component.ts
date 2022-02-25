@@ -9,6 +9,7 @@ import { SharedService } from 'src/app/utils/shared-service.service';
   styleUrls: ['./cards-grid.component.scss']
 })
 export class CardsGridComponent implements OnInit {
+  // Arrya for popular currencies
   mostPopularCurrencies : string[] = ['USD', 'EUR', 'JPY', 'GBP', 'AUD', 'CAD', 'CHF', 'CNY', 'SEK'];
   defaultFromCur: string = 'EUR';
   latestRateCur: Object;
@@ -17,7 +18,12 @@ export class CardsGridComponent implements OnInit {
   constructor(private exchangeRate: CurrencyExchangeService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
+
     this.getPopularCurrencyRates();
+
+    /**
+     * Calling get shared data to read the current from and to crruency in converter panel.
+     */
     this.subscription.add(
     this.sharedService.getSharedData$.subscribe(data => {
       this.defaultFromCur = data.fromCur;
@@ -26,6 +32,9 @@ export class CardsGridComponent implements OnInit {
     }));
   }
 
+  /**
+   * Function to fetch exchange rate of multiple popular currencies
+   */
   getPopularCurrencyRates(){
     this.exchangeRate.getMultiCurrencyRates(this.defaultFromCur, this.mostPopularCurrencies.map(data => data).join(',')).subscribe(data => {
       let res = JSON.parse(JSON.stringify(data)).results;
